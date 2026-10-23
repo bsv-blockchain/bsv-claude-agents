@@ -16,18 +16,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20, 22, 24]
+        node-version: ['22.23.4', '24.22.1']
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: actions/checkout@v7
+    - uses: actions/setup-node@v7
       with:
         node-version: ${{ matrix.node-version }}
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
+    - run: node --check bin/cli.js
+    - name: Verify native runtime
+      run: node -e "if(!['22.23.4','24.22.1'].includes(process.versions.node))throw Error(process.versions.node);const z=require('node:zlib');const b=Buffer.from('runtime');if(!z.brotliDecompressSync(z.brotliCompressSync(b)).equals(b))throw Error('Brotli');require('node:crypto').randomBytes(16)"
     - run: npm run lint:ci --if-present
     - run: npm run test:coverage --if-present
     - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
+      uses: codecov/codecov-action@v7.1.1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./coverage/lcov.info
@@ -40,13 +43,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-node@v4
+    - uses: actions/checkout@v7
+    - uses: actions/setup-node@v7
       with:
-        node-version: '24'
+        node-version: '24.22.1'
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
-    - run: npm run build
+    - run: node --check bin/cli.js
     - name: Check if version already published
       id: check-version
       run: |
