@@ -7,6 +7,7 @@
     "bsv-claude-agents": "./bin/cli.js"
   },
   "files": [
+    "NOTICE",
     "bin/",
     "agents/",
     "README.md",
@@ -29,7 +30,7 @@
     "npx"
   ],
   "author": "jonesjBSV (BSV Association)",
-  "license": "Open BSV",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=14"
   },
