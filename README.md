@@ -1,7 +1,7 @@
 # @bsv/bsv-claude-agents - BSV Claude Agents Installer
 
 [![NPM Version](https://img.shields.io/npm/v/@bsv/bsv-claude-agents)](https://www.npmjs.com/package/@bsv/bsv-claude-agents)
-[![License: Open BSV](https://img.shields.io/badge/License-Open%20BSV-blue.svg)](https://github.com/bsv-blockchain/bsv-claude-agents/blob/main/LICENSE)
+[![License: Apache 2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://github.com/bsv-blockchain/bsv-claude-agents/blob/main/LICENSE)
 
 This package provides BSV (Bitcoin SV) expert Claude agents for Claude Code. It automatically installs and manages BSV blockchain development agents that provide specialized knowledge and assistance for BSV application development.
 
@@ -255,4 +255,4 @@ If you encounter linking errors on Windows:
 
 ## License
 
-This project is licensed under the Open BSV License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
